@@ -21,7 +21,7 @@ func _physics_process(delta):
 		if velocity.y > 500:
 			velocity.y = 500
 		coyote_timer -= 1 * delta
-		#print("is not on floor")
+		#print("is not on floor test")
 	if is_on_floor_only() && !Input.is_action_just_pressed("jump"): 
 		coyote_timer = coyote_time
 	var direction = Input.get_axis("move_left", "move_right")
