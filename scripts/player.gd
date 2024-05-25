@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 @export var speed = 125.0
 @export var gravity = 400
@@ -10,12 +10,14 @@ var coyote_timer = 0.3
 
 @onready var animated_sprite = $AnimatedSprite2D
 
+func jump(force):
+	velocity.y = -force
+	coyote_timer = 0
+
 func _physics_process(delta):
 	#if Input.is_action_just_pressed("jump") && is_on_floor():
 	if Input.is_action_just_pressed("jump") && coyote_timer > 0:
-		velocity.y = -jump_force
-		coyote_timer = 0
-
+		jump(jump_force)
 	if is_on_floor() == false:
 		velocity.y += gravity * delta
 		if velocity.y > 500:
