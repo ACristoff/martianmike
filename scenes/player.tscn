@@ -201,6 +201,8 @@ size = Vector2(18, 23)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -16)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_d52cy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -213,3 +215,4 @@ position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_m3xqb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 255
