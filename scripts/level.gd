@@ -29,3 +29,7 @@ func _on_trap_touched_player():
 func reset_player():
 	player.velocity = Vector2.ZERO
 	player.global_position = start_position.global_position
+
+
+func _on_spikeball_touched_player():
+	pass # Replace with function body.
