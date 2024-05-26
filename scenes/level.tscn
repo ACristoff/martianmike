@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7ybyfny4glk1"]
+[gd_scene load_steps=11 format=3 uid="uid://b7ybyfny4glk1"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_xy035"]
 [ext_resource type="PackedScene" uid="uid://b7kxklqnw7urx" path="res://scenes/player.tscn" id="2_5jvfn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://f1vgdbgnopfv" path="res://scenes/jump_pad.tscn" id="4_ve4uu"]
 [ext_resource type="PackedScene" uid="uid://b450y14g87xqg" path="res://scenes/spikeball.tscn" id="5_it06v"]
 [ext_resource type="AudioStream" uid="uid://bbkwukblfn264" path="res://assets/audio/psycho-logy.mp3" id="7_2svh1"]
+[ext_resource type="PackedScene" uid="uid://d4ki1f17xs00m" path="res://scenes/tile_map.tscn" id="8_ybxoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nl88"]
 size = Vector2(406, 20)
@@ -21,10 +22,10 @@ script = ExtResource("1_xy035")
 position = Vector2(236, 136)
 
 [node name="startPosition" type="Marker2D" parent="."]
-position = Vector2(100, 191)
+position = Vector2(201, 140)
 
 [node name="ground" type="StaticBody2D" parent="."]
-position = Vector2(-15, 74)
+position = Vector2(-608, 32)
 
 [node name="Sprite2D" type="Sprite2D" parent="ground"]
 modulate = Color(0, 0, 0, 1)
@@ -46,6 +47,7 @@ position = Vector2(239, 278)
 shape = SubResource("RectangleShape2D_agyrm")
 
 [node name="Traps" type="Node2D" parent="."]
+position = Vector2(-2, -32)
 
 [node name="Saw" parent="Traps" instance=ExtResource("4_jkhog")]
 position = Vector2(441, 218)
@@ -57,6 +59,7 @@ position = Vector2(441, 144)
 position = Vector2(353, 223)
 
 [node name="Objects" type="Node2D" parent="."]
+position = Vector2(-2, -32)
 
 [node name="JumpPad" parent="Objects" instance=ExtResource("4_ve4uu")]
 position = Vector2(139, 239)
@@ -69,5 +72,8 @@ jumpForce = 400
 stream = ExtResource("7_2svh1")
 volume_db = -12.444
 autoplay = true
+
+[node name="TileMap" parent="." instance=ExtResource("8_ybxoo")]
+layer_0/tile_data = PackedInt32Array(917504, 393216, 1, 983040, 393216, 2, 917505, 458752, 1, 983041, 458752, 2, 917506, 458752, 1, 983042, 458752, 2, 917507, 458752, 1, 983043, 458752, 2, 917508, 458752, 1, 983044, 458752, 2, 917509, 458752, 1, 983045, 458752, 2, 917510, 458752, 1, 983046, 458752, 2, 917511, 458752, 1, 983047, 458752, 2, 917512, 458752, 1, 983048, 458752, 2, 917513, 458752, 1, 983049, 458752, 2, 917514, 458752, 1, 983050, 458752, 2, 917515, 458752, 1, 983051, 458752, 2, 917516, 458752, 1, 983052, 458752, 2, 917517, 458752, 1, 983053, 458752, 2, 917518, 458752, 1, 983054, 458752, 2, 917519, 458752, 1, 983055, 458752, 2, 917520, 458752, 1, 983056, 458752, 2, 917521, 458752, 1, 983057, 458752, 2, 917522, 458752, 1, 983058, 458752, 2, 917523, 458752, 1, 983059, 458752, 2, 917524, 458752, 1, 983060, 458752, 2, 917525, 458752, 1, 983061, 458752, 2, 917526, 458752, 1, 983062, 458752, 2, 917527, 458752, 1, 983063, 458752, 2, 917528, 458752, 1, 983064, 458752, 2, 917529, 458752, 1, 983065, 458752, 2, 917530, 458752, 1, 983066, 458752, 2, 917531, 458752, 1, 983067, 458752, 2, 917532, 458752, 1, 983068, 458752, 2, 917533, 524288, 1, 983069, 524288, 2, 851968, 393216, 0, 851969, 458752, 0, 851970, 458752, 0, 851971, 458752, 0, 851972, 458752, 0, 851973, 458752, 0, 851974, 458752, 0, 851975, 458752, 0, 851976, 458752, 0, 851977, 458752, 0, 851978, 458752, 0, 851979, 458752, 0, 851980, 458752, 0, 851981, 458752, 0, 851982, 458752, 0, 851983, 458752, 0, 851984, 458752, 0, 851985, 458752, 0, 851987, 458752, 0, 851988, 458752, 0, 851989, 458752, 0, 851990, 458752, 0, 851991, 458752, 0, 851992, 458752, 0, 851993, 458752, 0, 851994, 458752, 0, 851995, 458752, 0, 851996, 458752, 0, 851997, 524288, 0, 655380, 1114112, 1, 655381, 1179648, 1, 655382, 1245184, 1, 524311, 1114112, 1, 524312, 1179648, 1, 524313, 1245184, 1, 524304, 1114112, 1, 524305, 1179648, 1, 524306, 1245184, 1, 851986, 458752, 0)
 
 [connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]
