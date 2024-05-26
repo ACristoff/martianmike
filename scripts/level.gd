@@ -4,6 +4,13 @@ extends Node2D
 @onready var start_position = $startPosition
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var traps = get_tree().get_nodes_in_group("traps")
+	for trap in traps:
+		# old way of connecting shit
+		#trap.connect("touched_player", _on_trap_touched_player)
+		# new way of connecting shit
+		trap.touched_player.connect(_on_trap_touched_player)
+	#print(traps)
 	pass # Replace with function body.
 
 

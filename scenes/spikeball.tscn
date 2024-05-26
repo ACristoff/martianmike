@@ -44,7 +44,7 @@ _data = {
 "move": SubResource("Animation_c2ioq")
 }
 
-[node name="Spikeball" type="Node2D"]
+[node name="Spikeball" type="Node2D" groups=["traps"]]
 script = ExtResource("2_cw4go")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -51,6 +51,7 @@ func update_animations(direction):
 	pass
 
 func _ready():
+	
 	pass
 
 #func _process(delta):
