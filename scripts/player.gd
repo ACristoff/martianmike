@@ -4,9 +4,11 @@ class_name Player
 @export var speed = 125.0
 @export var gravity = 400
 @export var jump_force = 200
+
 @export var coyote_time = 0.3
 var coyote_timer = 0.3
 
+var active = true
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -15,24 +17,22 @@ func jump(force):
 	coyote_timer = 0
 
 func _physics_process(delta):
-	#if Input.is_action_just_pressed("jump") && is_on_floor():
-	if Input.is_action_just_pressed("jump") && coyote_timer > 0:
-		jump(jump_force)
 	if is_on_floor() == false:
 		velocity.y += gravity * delta
-		if velocity.y > 500:
-			velocity.y = 500
+	if velocity.y > 500:
+		velocity.y = 500
 		coyote_timer -= 1 * delta
-		#print("is not on floor test")
-	if is_on_floor_only() && !Input.is_action_just_pressed("jump"): 
-		coyote_timer = coyote_time
-	var direction = Input.get_axis("move_left", "move_right")
-	#print(direction)
-	if direction != 0:
-		animated_sprite.flip_h = (direction == -1)
+	var direction = 0
+	if active == true:
+		if Input.is_action_just_pressed("jump") && coyote_timer > 0:
+			jump(jump_force)
+		if is_on_floor_only() && !Input.is_action_just_pressed("jump"): 
+			coyote_timer = coyote_time
+		direction = Input.get_axis("move_left", "move_right")
+		if direction != 0:
+			animated_sprite.flip_h = (direction == -1)
 	velocity.x = direction * speed
 	move_and_slide()
-	#print(coyote_timer)
 	update_animations(direction)
 
 func update_animations(direction):
