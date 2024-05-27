@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7ybyfny4glk1"]
+[gd_scene load_steps=14 format=3 uid="uid://b7ybyfny4glk1"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_xy035"]
 [ext_resource type="PackedScene" uid="uid://b7kxklqnw7urx" path="res://scenes/player.tscn" id="2_5jvfn"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bbkwukblfn264" path="res://assets/audio/psycho-logy.mp3" id="7_2svh1"]
 [ext_resource type="PackedScene" uid="uid://d4ki1f17xs00m" path="res://scenes/tile_map.tscn" id="8_ybxoo"]
 [ext_resource type="PackedScene" uid="uid://bqs5nx28e5iml" path="res://scenes/start.tscn" id="10_km6si"]
+[ext_resource type="PackedScene" uid="uid://dg4yb22d354ro" path="res://scenes/exit.tscn" id="11_vaf2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nl88"]
 size = Vector2(406, 20)
@@ -21,9 +22,6 @@ size = Vector2(495, 20)
 script = ExtResource("1_xy035")
 
 [node name="BG" parent="." instance=ExtResource("2_07p25")]
-
-[node name="Player" parent="." instance=ExtResource("2_5jvfn")]
-position = Vector2(240, 160)
 
 [node name="ground" type="StaticBody2D" parent="."]
 position = Vector2(-608, 32)
@@ -79,5 +77,11 @@ layer_0/tile_data = PackedInt32Array(917504, 393216, 1, 983040, 393216, 2, 91750
 
 [node name="Start" parent="." instance=ExtResource("10_km6si")]
 position = Vector2(187, 209)
+
+[node name="Exit" parent="." instance=ExtResource("11_vaf2k")]
+position = Vector2(306, 209)
+
+[node name="Player" parent="." instance=ExtResource("2_5jvfn")]
+position = Vector2(240, 160)
 
 [connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]
