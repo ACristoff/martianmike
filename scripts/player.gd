@@ -11,8 +11,10 @@ var coyote_timer = 0.3
 var active = true
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var jump_sfx = preload("res://assets/audio/jump.wav")
 
 func jump(force):
+	GlobalTheme.play_sfx(jump_sfx, 0.0)
 	velocity.y = -force
 	coyote_timer = 0
 

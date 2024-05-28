@@ -12,6 +12,7 @@ var winCon = false
 @onready var start = $Start
 @onready var exit = $Exit
 @onready var death_zone = $Deathzone
+@onready var hurt_sfx = preload("res://assets/audio/hurt.wav")
 
 @onready var hud = UiLayer.get_node("HUD")
 # Called when the node enters the scene tree for the first time.
@@ -63,11 +64,13 @@ func _process(delta):
 
 
 func _on_deathzone_body_entered(body):
+	GlobalTheme.play_sfx(hurt_sfx)
 	reset_player()
 	pass # Replace with function body.
 
 
 func _on_trap_touched_player():
+	GlobalTheme.play_sfx(hurt_sfx)
 	reset_player()
 	pass # Replace with function body.
 
