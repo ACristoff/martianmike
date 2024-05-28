@@ -5,6 +5,7 @@ extends Node2D
 var player = null
 @onready var start = $Start
 @onready var exit = $Exit
+@onready var death_zone = $Deathzone
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -18,6 +19,7 @@ func _ready():
 		trap.touched_player.connect(_on_trap_touched_player)
 	#print(traps)
 	exit.body_entered.connect(_on_exit_body_entered)
+	death_zone.body_entered.connect(_on_deathzone_body_entered)
 	pass # Replace with function body.
 
 
