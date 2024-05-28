@@ -2,7 +2,7 @@ extends Node2D
 
 @export var next_level: PackedScene = null
 #song length 293
-@export var level_time = 5
+@export var level_time = 293
 
 var player = null
 var timer_node = null
@@ -11,8 +11,11 @@ var winCon = false
 @onready var start = $Start
 @onready var exit = $Exit
 @onready var death_zone = $Deathzone
+
+@onready var hud = UiLayer.get_node("HUD")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalTheme.play_music_level()
 	player = get_tree().get_first_node_in_group("player")
 	if player != null:
 		player.global_position = start.get_spawn_pos()
@@ -39,10 +42,13 @@ func _ready():
 func _on_level_timer_timeout():
 	if winCon == false:
 		time_left -= 1
+		#print(hud)
+		hud.set_time_label(time_left)
 		#print(time_left)
-		if time_left < 0:
+		if time_left <= 0:
 			reset_player()
 			time_left = level_time
+			hud.set_time_label("Game Over!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
