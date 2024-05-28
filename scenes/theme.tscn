@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/theme.gd" id="1_euqhv"]
 
 [node name="Theme" type="AudioStreamPlayer"]
+volume_db = -10.0
 script = ExtResource("1_euqhv")

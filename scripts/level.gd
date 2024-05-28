@@ -2,8 +2,9 @@ extends Node2D
 
 @export var next_level: PackedScene = null
 #song length 293
-@export var level_time = 293
-
+#create a minute:second:centisecond timer algo?
+@export var level_time = 2930
+@export var is_final_level: bool = false
 var player = null
 var timer_node = null
 var time_left = null
@@ -15,6 +16,7 @@ var winCon = false
 @onready var hud = UiLayer.get_node("HUD")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hud.showUI()
 	GlobalTheme.play_music_level()
 	player = get_tree().get_first_node_in_group("player")
 	if player != null:
@@ -31,7 +33,7 @@ func _ready():
 	time_left = level_time
 	timer_node = Timer.new()
 	timer_node.name = "Level Timer"
-	timer_node.wait_time = 1
+	timer_node.wait_time = 0.1
 	timer_node.timeout.connect(_on_level_timer_timeout)
 	add_child(timer_node)
 	timer_node.start()
@@ -79,10 +81,14 @@ func _on_spikeball_touched_player():
 
 func _on_exit_body_entered(body):
 	if body is Player:
-		if next_level != null:
+		if is_final_level || next_level != null:
 			exit.animate()
 			player.active = false
 			winCon = true
 			await get_tree().create_timer(1.5).timeout
-			get_tree().change_scene_to_packed(next_level)
+			if is_final_level:
+				UiLayer.show_win_screen(true)
+				pass
+			else:
+				get_tree().change_scene_to_packed(next_level)
 	pass
