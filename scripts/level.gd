@@ -79,8 +79,8 @@ func reset_player():
 	player.global_position = start.get_spawn_pos()
 
 
-func _on_spikeball_touched_player():
-	pass # Replace with function body.
+#func _on_spikeball_touched_player():
+	#pass # Replace with function body.
 
 func _on_exit_body_entered(body):
 	if body is Player:

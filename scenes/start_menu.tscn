@@ -78,5 +78,18 @@ theme_override_font_sizes/font_size = 15
 text = "Quit
 "
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 139.0
+offset_right = 288.0
+offset_bottom = 266.0
+text = "Controls:
+WASD - Movement
+Spacebar - Jump
+Esc - Quit
+Reach the end before the world ends"
+vertical_alignment = 1
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
